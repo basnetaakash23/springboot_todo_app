@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class TodoServiceImplementation implements TodoService{
-    ObjectMapper objMapper = new ObjectMapper();
 
     @Autowired
     private ToDoRepository toDoRepository;
