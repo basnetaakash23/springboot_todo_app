@@ -11,8 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/test")
 public class TestController {
 	@GetMapping("/all")
+	@PreAuthorize("hasRole('')")
 	public String allAccess() {
 		return "Public Content.";
+	}
+
+	@GetMapping("/all_user")
+	@PreAuthorize("hasRole('')")
+	public String usersAccess() {
+		return "All user Content.";
 	}
 	
 	@GetMapping("/user")
@@ -22,7 +29,7 @@ public class TestController {
 	}
 
 	@GetMapping("/mod")
-	@PreAuthorize("hasRole('MODERATOR')")
+	@PreAuthorize("hasRole('ROLE_MODERATOR')")
 	public String moderatorAccess() {
 		return "Moderator Board.";
 	}

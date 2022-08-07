@@ -1,8 +1,9 @@
 package com.bezkoder.spring.jwt.mongodb.payload.response;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class JwtResponse {
+public class JwtResponse implements Serializable {
 	private String token;
 	private String type = "Bearer";
 	private String id;
