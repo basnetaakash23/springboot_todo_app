@@ -1,8 +1,10 @@
 package com.bezkoder.spring.jwt.mongodb.controllers;
 
 import com.bezkoder.spring.jwt.mongodb.models.ToDo;
-import com.bezkoder.spring.jwt.mongodb.models.User;
+import com.bezkoder.spring.jwt.mongodb.payload.response.TodoResponse;
 import com.bezkoder.spring.jwt.mongodb.repository.ToDoRepository;
+//import com.bezkoder.spring.jwt.mongodb.security.services.TodoService;
+import com.bezkoder.spring.jwt.mongodb.services.TodoService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -20,10 +22,16 @@ public class ToDoController {
     @Autowired
     private ToDoRepository repository;
 
+    @Autowired
+    private TodoService todoService;
+
     @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public List<ToDo> getAllTodos(){
-        return repository.findAll();
+    public List<TodoResponse> getAllTodos(){
+
+        //return repository.findAll();
+
+        return todoService.todoResponse();
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
